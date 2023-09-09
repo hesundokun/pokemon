@@ -2,8 +2,20 @@ import ApiClient from "../utils/ApiUtil";
 
 export async function fetchPokemonApi() {
     const fetchPokemonUrl = `/pokemon?offset=0&limit=50`;
-    const pokemon = await ApiClient.get(fetchPokemonUrl);
+    const {count, next, results } = await ApiClient.get(fetchPokemonUrl);
+    
+    const response = Object.assign({}, {count, next, results: [] })
 
-    console.log("pokemon Results", pokemon);
-    return pokemon;
+    for(let i = 0; i < results?.length; i++) {
+        const pokemonDetailUrl = (results[i].url || '').replace(process.env.REACT_APP_HOST_API, '');
+        const pokemonDetail = await ApiClient.get(pokemonDetailUrl);
+        response.results[i] = {
+            ...pokemonDetail,
+            imageUrl: pokemonDetail?.sprites?.other?.dream_world?.front_default,
+        };
+    }
+
+    console.log("response", response)
+
+    return response;
 }
