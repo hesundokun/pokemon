@@ -16,10 +16,9 @@ const App = (props) => {
 
     setTimeout(async () => {
       const pokemonResult = await fetchPokemonApi()
-      setIsLoading(false);
+      setIsLoading(false)
       setPokemonList(pokemonResult)
     }, 2 * 1000)
-
   }
 
   useEffect(() => {
@@ -37,7 +36,7 @@ const App = (props) => {
 
       <main>
         {(pokemonList?.results || []).map((pokemon) => (
-          <PokemonCard key={pokemon?.id} {...pokemon} />
+          <PokemonCard key={pokemon?.id} {...pokemon} pokemon={pokemon} />
         ))}
       </main>
     </div>
