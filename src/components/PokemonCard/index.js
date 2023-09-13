@@ -2,11 +2,18 @@ import React from 'react'
 
 import './style.scss'
 
-const PokemonCard = ({ id, name, imageUrl, types, pokemon }) => {
+const PokemonCard = ({ id, name, imageUrl, types, pokemon, onClick }) => {
   console.log('Pokemon Details', pokemon)
 
+  const handleClickPokemonCard = () => {
+    onClick(pokemon)
+  }
+
   return (
-    <div className={`card-container ${types[0]}`}>
+    <div
+      className={`card-container ${types[0]}`}
+      onClick={handleClickPokemonCard}
+    >
       <div className='pokemon-id'>{`#${id}`}</div>
       <div className='pokemon-name-types'>
         <h2>{name}</h2>

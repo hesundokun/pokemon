@@ -1,3 +1,5 @@
+@import '../../assets/Styles/variables';
+
 .card-container {
   &.fire {
     background-color: #fb6c6c;
@@ -56,8 +58,7 @@
   &.rockDark {
     background-color: #ccccde;
   }
-
-  background-color: red;
+  box-shadow: $box-shadow;
   color: #fff;
   max-width: 100%;
   border-radius: 15px;
