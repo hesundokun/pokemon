@@ -1,14 +1,14 @@
 .pagination {
-   display: flex; 
-   gap: 10px;
-   list-style: none;
+  display: flex;
+  gap: 10px;
+  list-style: none;
 
-   > li {
+  > li {
     border: 1px solid;
     border-radius: 5px;
     padding: 5px 10px;
     &:hover {
-        cursor: pointer;
+      cursor: pointer;
     }
-   }
+  }
 }
